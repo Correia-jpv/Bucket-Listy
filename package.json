@@ -4,7 +4,7 @@
   "description": "Bucket List website",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode production",
     "sass": "node-sass -w src/scss/ -o dist/css/ --recursive",
     "watch": "npm-watch"
   },

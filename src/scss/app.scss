@@ -89,7 +89,6 @@ header {
       position: absolute;
       top: 70%;
       left: 50%;
-      opacity: 0;
       z-index: 10;
       transform: translateX(-50%) translateY(-50%);
       animation: fade-in 0.75s 0.25s ease-in forwards;
@@ -98,7 +97,7 @@ header {
 }
 
 // Footer
-footer {
+#main-footer {
   padding: 1rem;
   background: $secondary-color;
   display: flex;
@@ -188,5 +187,4 @@ footer {
   }
 }
 
-// Media queries
 @import 'media';

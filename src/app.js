@@ -133,13 +133,13 @@ async function getQuote() {
 
   // Only show quote on large screens
   if (mediaQuery.matches) {
-    const api_url = "https://zenquotes.io/api/random";
+    const api_url = "https://still-ridge-96311.herokuapp.com/https://zenquotes.io/api/random";
     let quote = '',
       response, data,
       maxLength = 140;
     // Get a short quote
     while (quote.length == 0 || quote.includes('zenquotes') || quote.length > maxLength) {
-      response = await fetch(api_url);
+      response = await fetch(api_url)
       data = await response.json();
 
       quote = data[0]['h'];
