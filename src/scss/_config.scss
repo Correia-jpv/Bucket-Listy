@@ -1,0 +1,18 @@
+// Variables
+$website-width: 1200px;
+$primary-color: #212529;
+$secondary-color: #fff;
+$success-color: #5cb85c;
+$error-color: #ed4337;
+$white: #efefef;
+$orange: tomato;
+$height: 20vh;
+// Functions
+@function set-text-color($color) {
+  @if(lightness($color)>50) {
+    @return #000;
+  }
+  @else {
+    @return #fff;
+  }
+}

@@ -1,0 +1,192 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "config";
+@import "utilities";
+// General styles
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Sora', sans-serif !important;
+  font-size: 18px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Navbar
+nav {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  .logo {
+    height: 75px;
+    width: 115px;
+    background: url("../img/logo_trimmed.png") no-repeat center center;
+    margin: 0 1rem;
+  }
+  &.scrolled {
+    background: rgba($primary-color, 0.9);
+  }
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    .coming-soon a {
+      position: relative;
+      color: rgba($secondary-color, 0.6);
+      &::after {
+        position: absolute;
+        content: "soon";
+        vertical-align: super;
+        font-size: 0.7rem;
+        line-height: 0;
+      }
+      &:hover::after {
+        font-size: 0.9rem;
+      }
+    }
+    li {
+      padding: 1rem 0.5rem;
+      a {
+        font-size: 0.9em;
+        color: $secondary-color;
+        text-decoration: none;
+        margin: 5px 0 0 20px;
+        display: block;
+        &:hover {
+          color: darken($secondary-color, 7%);
+        }
+      }
+    }
+  }
+}
+
+// Header
+header {
+  background: $primary-color;
+  .headline {
+    position: relative;
+    height: 140px;
+    color: $secondary-color;
+    text-align: center;
+    background: url('https://picsum.photos/1200/160?random=1') no-repeat center center;
+    background-size: cover;
+    &:after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba($primary-color, 0.7);
+    }
+    .inner {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      opacity: 0;
+      z-index: 10;
+      transform: translateX(-50%) translateY(-50%);
+      animation: fade-in 0.75s 0.25s ease-in forwards;
+    }
+  }
+}
+
+// Footer
+footer {
+  padding: 1rem;
+  background: $secondary-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  p {
+    font-size: 1rem;
+    margin: 0;
+  }
+  .footer-icons {
+    ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        margin-right: 1rem;
+      }
+      li:last-of-type {
+        margin-right: 0;
+      }
+    }
+    .bi {
+      font-size: 1.3rem;
+      color: $primary-color;
+      &:hover {
+        color: lighten($primary-color, 25%);
+        transition: color 0.3s ease-in;
+      }
+    }
+  }
+}
+
+// New Item and Add Random Items 
+#add-items {
+  > :first-child {
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+    input {
+      width: 100%;
+    }
+  }
+  .row div {
+    padding: 1rem;
+    background-color: $secondary-color;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: background-color 600ms, color 600ms;
+  }
+  span {
+    margin-left: 0.5rem;
+  }
+}
+
+// Bucket Item
+.bucket-item {
+  background-color: $secondary-color;
+  border-radius: .5rem;
+  min-height: 10vh;
+  visibility: hidden;
+  opacity: 0;
+  max-height: 0;
+  transition: all 600ms;
+  >* {
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+  }
+  &-label {
+    width: 100%;
+    div>span {
+      margin-left: 0.5rem;
+    }
+    // Transparent Tick on Bucket Item:hover
+    &:hover span:after {
+      border-color: #999
+    }
+  }
+  &-remove {
+    display: flex;
+    align-items: center;
+    &:hover {
+      color: $error-color;
+    }
+  }
+}
+
+// Media queries
+@import 'media';

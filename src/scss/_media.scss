@@ -1,0 +1,35 @@
+@media(min-width: 769px) {
+  .inner * {
+    display: inline-block;
+  }
+}
+
+// Tablets and smaller
+@media(max-width: 768px) {
+  body {
+    font-size: 21px;
+  }
+  nav>.container {
+    flex-direction: column;
+  }
+  .inner * {
+    display: none;
+  }
+  i {
+    font-size: 2rem!important;
+  }
+  .checkbox,
+  .checkbox span {
+    height: 3rem;
+    width: 3rem;
+  }
+  footer {
+    flex-direction: column-reverse;
+  }
+}
+
+// Smartphones
+@media(max-width: 576px) {}
+
+// Landscape
+@media(max-heigth: 580px) {}

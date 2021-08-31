@@ -1,0 +1,162 @@
+.box {
+  box-sizing: border-box;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+// Checkbox Tick
+.checkbox {
+  background-color: $secondary-color;
+  // height: 28px;
+  height: 2rem;
+  // width: 28px;
+  width: 2rem;
+  margin: 0 .25em;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  span {
+    position: relative;
+    display: block;
+    // height: 28px;
+    // width: 28px;
+    height: 2rem;
+    width: 2rem;
+    padding: 0;
+    &:after {
+      -moz-transform: scaleX(-1) rotate(135deg);
+      -ms-transform: scaleX(-1) rotate(135deg);
+      -webkit-transform: scaleX(-1) rotate(135deg);
+      transform: scaleX(-1) rotate(135deg);
+      -moz-transform-origin: left top;
+      -ms-transform-origin: left top;
+      -webkit-transform-origin: left top;
+      transform-origin: left top;
+      border-right: 4px solid transparent;
+      border-top: 4px solid transparent;
+      content: '';
+      position: absolute;
+      display: block;
+      // height: 20px;
+      // left: 3px;
+      // top: 15px;
+      // width: 10px
+      height: 80%;
+      width: 35%;
+      top: 55%;
+      left: 8%;
+    }
+  }
+  input {
+    display: none;
+    &:checked+span:after {
+      -webkit-animation: check .8s;
+      -moz-animation: check .8s;
+      -o-animation: check .8s;
+      animation: check .8s;
+      border-color: #555
+    }
+  }
+  &:hover span:after {
+    border-color: #999
+  }
+}
+
+// Placeholder Colors
+input {
+  &::placeholder {
+    color: $error-color;
+    opacity: 0.7;
+  }
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
+
+
+/*** Transitions ***/
+
+// Tick check
+@keyframes check {
+  0% {
+    height: 0;
+    width: 0;
+  }
+  25% {
+    height: 0;
+    // width: 10px;
+    width: 35%;
+  }
+  50% {
+    // height: 20px;
+    // width: 10px;
+    height: 80%;
+    width: 35%;
+  }
+}
+
+// Fade In-Out
+.show {
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: 100% !important;
+}
+
+// Spin Animation
+.spin:hover i {
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 4000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 4000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 4000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  animation-name: spin;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@-ms-keyframes spin {
+  from {
+    -ms-transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

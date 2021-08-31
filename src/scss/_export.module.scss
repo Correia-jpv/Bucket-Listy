@@ -1,0 +1,7 @@
+@import "config";
+:export {
+  primaryColor: $primary-color;
+  secondaryColor: $secondary-color;
+  successColor: $success-color;
+  errorColor: $error-color;
+}
