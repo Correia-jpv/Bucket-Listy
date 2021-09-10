@@ -28,7 +28,7 @@ export function getElementOffset(element) {
 export function initParticles() {
   const script = document.querySelector('#particleJSScript');
   script.addEventListener('load', function() {
-    particlesJS.load('particles-js', '../libs/particles-js/package.json', function() {
+    particlesJS.load('particles-js', '../src/libs/particles-js/package.json', function() {
       console.log('callback - particles.js config loaded');
     });
   });
