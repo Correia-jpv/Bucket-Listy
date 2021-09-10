@@ -63,6 +63,12 @@
   &:hover span:after {
     border-color: #999
   }
+  // Tablets and smaller
+  @media(max-width: 768px) {
+    &:hover span:after {
+      border-color: transparent;
+    }
+  }
 }
 
 // Placeholder Colors
@@ -74,6 +80,27 @@ input {
   &:focus::placeholder {
     color: transparent;
   }
+}
+
+// Particles-js Background Animation
+#particles-js canvas {
+  display: block;
+  vertical-align: bottom;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+  -webkit-transition: opacity .8s ease, -webkit-transform 1.4s ease;
+  transition: opacity .8s ease, transform 1.4s ease
+}
+
+#particles-js {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -10;
+  top: 0;
+  left: 0
 }
 
 
@@ -106,22 +133,22 @@ input {
 }
 
 // Spin Animation
-.spin:hover i {
+.spin :hover i {
   -webkit-animation-name: spin;
-  -webkit-animation-duration: 4000ms;
-  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 600ms;
+  -webkit-animation-iteration-count: 2;
   -webkit-animation-timing-function: linear;
   -moz-animation-name: spin;
-  -moz-animation-duration: 4000ms;
-  -moz-animation-iteration-count: infinite;
+  -moz-animation-duration: 600ms;
+  -moz-animation-iteration-count: 2;
   -moz-animation-timing-function: linear;
   -ms-animation-name: spin;
-  -ms-animation-duration: 4000ms;
-  -ms-animation-iteration-count: infinite;
+  -ms-animation-duration: 600ms;
+  -ms-animation-iteration-count: 2;
   -ms-animation-timing-function: linear;
   animation-name: spin;
-  animation-duration: 4000ms;
-  animation-iteration-count: infinite;
+  animation-duration: 600ms;
+  animation-iteration-count: 2;
   animation-timing-function: linear;
 }
 

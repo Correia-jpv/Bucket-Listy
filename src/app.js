@@ -10,6 +10,7 @@ loadEventListeners();
 // Load all event listeners
 function loadEventListeners() {
   document.addEventListener('DOMContentLoaded', getBucketList);
+  document.addEventListener('DOMContentLoaded', utilities.initParticles);
 
   const elNewItem = document.querySelector('#add-new-item-button');
   const elAddRandom = document.querySelector('#add-random');

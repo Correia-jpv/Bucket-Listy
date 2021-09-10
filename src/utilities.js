@@ -24,3 +24,12 @@ export function getElementOffset(element) {
   var left = box.left + window.pageXOffset - de.clientLeft;
   return { top: top, left: left };
 }
+
+export function initParticles() {
+  const script = document.querySelector('#particleJSScript');
+  script.addEventListener('load', function() {
+    particlesJS.load('particles-js', '../libs/particles-js/package.json', function() {
+      console.log('callback - particles.js config loaded');
+    });
+  });
+}

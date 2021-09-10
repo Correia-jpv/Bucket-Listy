@@ -2,7 +2,7 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 @import "config";
 @import "utilities";
-// General styles
+// General styles 
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,7 +10,8 @@
 }
 
 body {
-  font-family: 'Sora', sans-serif !important;
+  font-family: 'Sora';
+  font-display: swap;
   font-size: 18px;
   min-height: 100vh;
   display: flex;
@@ -74,7 +75,7 @@ header {
     height: 140px;
     color: $secondary-color;
     text-align: center;
-    background: url('https://picsum.photos/1200/160?random=1') no-repeat center center;
+    background: url('https://picsum.photos/1000/160/?blur=1&random=1.webp') no-repeat center center;
     background-size: cover;
     &:after {
       position: absolute;
