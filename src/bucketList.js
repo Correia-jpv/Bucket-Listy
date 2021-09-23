@@ -21,7 +21,6 @@ class Item {
 
     // Verify if item already exists
     (!(this.name in bucketList)) ? this.addItemToDB(): this.updateItemToDB();
-
     bucketList[this.name] = this.checked;
 
     localStorage.setItem('bucketList', JSON.stringify(bucketList));
@@ -162,11 +161,11 @@ export default class BucketList {
                 if (!response.ok) {
                   throw new Error('Connection problem or item not found');
                 }
-
-                const name = response.name;
-                this.setItem(name, checked);
-
                 return response.json();
+              })
+              .then(data => {
+                const name = data.name;
+                this.setItem(name, checked);
               })
           };
         })
