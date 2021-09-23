@@ -35,9 +35,10 @@
   <meta property="og:title" content="Find the top unique bucket list ideas" />
   <meta property="og:site_name" content="Bucket Listy" />
   <meta property="og:url" content="//bucketlisty.com" />
+  <noscript><style>body { visibility: visible; }</style></noscript>
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark" style="visibility: hidden;">
   <div id="particles-js"></div>
   <!-- Navbar -->
   <nav role="navigation">
@@ -48,6 +49,7 @@
       <ul>
         <li><a href="./" aria-label="Homepage">Home</a></li>
         <li class="coming-soon"><a href="#">Achievements</a></li>
+        <li><a href="https://bucketlisty.hub.loginradius.com/auth.aspx?action=register&return_url=https://bucketlisty.com">Login</a></li>
       </ul>
     </div>
   </nav>
@@ -60,29 +62,25 @@
   </header>
   <!-- Main -->
   <section>
-    <section>
-      <div id="add-items" class="container mt-3 text-center">
-        <div id="new-item" class="row g-0">
-          <div class="col-12 box">
-            <input id="new-item-input" type="text">
-          </div>
-        </div>
-        <div class="row g-0">
-          <div id="add-new-item-button" class="col-6 box justify-content-center">
-            <i class="bi bi-plus-square fa-lg"></i>
-            <span>New</span>
-          </div>
-          <div id="add-random" class="col-6 box justify-content-center spin">
-            <i class="bi bi-dice-4 fa-lg"></i>
-            <span>Add Random</span>
-          </div>
+    <div id="add-items" class="container mt-3 text-center">
+      <div id="new-item" class="row g-0">
+        <div class="col-12 box">
+          <input id="new-item-input" type="search">
         </div>
       </div>
-
-      <div id="bucket-list" class="container my-3">
-
+      <div class="row g-0">
+        <div id="add-new-item-button" class="col-6 box justify-content-center">
+          <i class="bi bi-plus-square fa-lg"></i>
+          <span>New</span>
+        </div>
+        <div id="add-random" class="col-6 box justify-content-center spin">
+          <i class="bi bi-dice-4 fa-lg"></i>
+          <span>Add Random</span>
+        </div>
       </div>
-    </section>
+    </div>
+    <div id="bucket-list" class="container my-3">
+    </div>
   </section>
 
   <!-- Footer -->

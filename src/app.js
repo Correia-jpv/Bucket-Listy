@@ -2,13 +2,15 @@ import 'bootstrap';
 import './scss/app.scss';
 import variables from './scss/_export.module.scss';
 import * as utilities from './utilities';
-import BucketList from './bucketItem';
+import BucketList from './bucketList';
 
 // Load all event listeners
 loadEventListeners();
 
 // Load all event listeners
 function loadEventListeners() {
+  window.addEventListener('scroll', onScrollEventHandler, false);
+  document.addEventListener('DOMContentLoaded', utilities.loadBody);
   document.addEventListener('DOMContentLoaded', getBucketList);
   document.addEventListener('DOMContentLoaded', utilities.initParticles);
 
@@ -18,15 +20,13 @@ function loadEventListeners() {
   elNewItem.addEventListener('click', addItem);
   elAddRandom.addEventListener('click', addRandomItems);
 
-  window.addEventListener('scroll', onScrollEventHandler, false);
-
-  getQuote();
+  createHeaderQuote();
 }
 
 // Check for stored data and populate bucket list
-function getBucketList() {
+async function getBucketList() {
   let bucketList = new BucketList;
-  bucketList.populate();
+  await bucketList.populate()
   createBucketList(bucketList);
 }
 
@@ -34,7 +34,7 @@ function getBucketList() {
 async function createBucketList(bucketList = new BucketList) {
   // Get the stored bucket list
   const lsBucketList = new BucketList
-  lsBucketList.populate();
+  lsBucketList.getBucketListFromLS();
 
   // Get the item index
   let elItemRow = document.querySelectorAll("#bucket-list .row:last-child")[0];
@@ -129,7 +129,7 @@ function newItemButtonSuccessTransition() {
 }
 
 // Random inspirational quote from an API for the header 
-async function getQuote() {
+async function createHeaderQuote() {
   let mediaQuery = window.matchMedia("(min-width: 769px)")
 
   // Only show quote on large screens
@@ -222,7 +222,7 @@ function tickItem(e) {
 // Remove Event
 async function RemoveItem(e) {
   let bucketList = new BucketList;
-  bucketList.populate();
+  bucketList.getBucketListFromLS();
 
   let item, elItem;
 

@@ -139,3 +139,13 @@ export function initParticles() {
     "retina_detect": true
   });
 }
+
+export function loadBody() {
+  document.body.style.visibility = 'visible';
+}
+
+export function getURLParams(param) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return (param) ? urlParams.get(param) : urlParams;
+}
