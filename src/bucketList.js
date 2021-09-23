@@ -144,7 +144,7 @@ export default class BucketList {
           return response.json();
         })
         .then(async data => {
-          const bucketListDB = data[0]['items'];
+          const bucketListDB = data['items'];
 
           // Reset LS
           localStorage.removeItem('bucketList');
