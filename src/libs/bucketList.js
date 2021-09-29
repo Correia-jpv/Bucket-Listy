@@ -1,4 +1,4 @@
-import * as utilities from './utilities';
+import * as utilities from '../utilities';
 const api_url = "https://bucketlisty-api.herokuapp.com/api/";
 
 class Item {

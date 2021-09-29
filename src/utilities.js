@@ -27,6 +27,35 @@ export function getElementOffset(element) {
   return { top: top, left: left };
 }
 
+// Scroll Event
+export function onScrollEventHandler() {
+  let supportPageOffset = window.pageXOffset !== undefined;
+  let isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+
+  let scrollTop = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+
+
+  let elHeadline = document.querySelector('.headline'),
+    elInner = document.querySelector('.inner'),
+    elNav = document.querySelector('nav'),
+    navHeight = elNav.offsetHeight;
+
+  let headlineHeight = elHeadline.offsetHeight - navHeight,
+    navOffset = getElementOffset(elNav)['top'];
+
+  elHeadline.style.opacity = (1 - scrollTop / headlineHeight);
+
+  for (var i = 0; i < elInner.length; i++) {
+    elInner[i].style.transform = `translateY(${scrollTop * 0.4})px`;
+  }
+
+  if (navOffset > headlineHeight) {
+    elNav.classList.add('scrolled');
+  } else {
+    elNav.classList.remove('scrolled');
+  }
+}
+
 export function initParticles() {
   particlesJS('particles-js', {
     "particles": {
