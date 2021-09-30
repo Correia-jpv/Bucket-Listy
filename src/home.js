@@ -7,7 +7,7 @@ init()
 function init() {
   let currentPage = window.location.pathname;
 
-  if (currentPage == '/' || "/index.html") {
+  if (currentPage == '/' || currentPage == "/index.html") {
     document.addEventListener('DOMContentLoaded', getBucketList);
 
     const elNewItem = document.querySelector('#add-new-item-button');
