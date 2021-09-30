@@ -39,7 +39,7 @@ class Item {
 
   async addItemToDB() {
     // Verify if user's token is present
-    const userToken = localStorage.getItem('user');
+    const userToken = utilities.getURLParams('token');
     if (userToken) {
       const url = `${api_url}users/${userToken}`
 
@@ -68,7 +68,7 @@ class Item {
 
   async updateItemToDB() {
     // Verify if user's token is present
-    const userToken = localStorage.getItem('user');
+    const userToken = utilities.getURLParams('token');
     if (userToken) {
       const url = `${api_url}users/${userToken}/${this.name}`
       await fetch(url, {
@@ -95,7 +95,7 @@ class Item {
 
   async removeItemFromDB() {
     // Verify if user's token is present
-    const userToken = localStorage.getItem('user');
+    const userToken = utilities.getURLParams('token');
     if (userToken) {
       const url = `${api_url}users/${userToken}/${this.name}`
       await fetch(url, {
@@ -131,14 +131,9 @@ export default class BucketList {
   // Get bucket list items from the online database
   async getBucketListFromDB() {
     // Verify if user's token is present
-    const lsToken = localStorage.getItem('user'),
-      urlToken = utilities.getURLParams('token'),
-      userToken = lsToken || urlToken;
+    const userToken = utilities.getURLParams('token');
     if (userToken) {
-      const url = `${api_url}users/token/${userToken}`,
-        elLogin = document.querySelector('#login');
-      elLogin.text = 'Logout';
-
+      const url = `${api_url}users/token/${userToken}`
 
       // Get user's info and items
       await fetch(url)
@@ -154,10 +149,6 @@ export default class BucketList {
           // Reset LS
           localStorage.removeItem('bucketList');
           this.items = {}
-
-          // Save user's token to LS
-          localStorage.setItem('user', userToken);
-
 
           // Get each item's name
           for (const item of bucketListDB) {

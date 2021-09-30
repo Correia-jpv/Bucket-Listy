@@ -5,17 +5,13 @@ import BucketList from './libs/bucketList';
 init()
 
 function init() {
-  let currentPage = window.location.pathname;
+  document.addEventListener('DOMContentLoaded', getBucketList);
 
-  if (currentPage == '/' || "/index.html") {
-    document.addEventListener('DOMContentLoaded', getBucketList);
+  const elNewItem = document.querySelector('#add-new-item-button');
+  const elAddRandom = document.querySelector('#add-random');
 
-    const elNewItem = document.querySelector('#add-new-item-button');
-    const elAddRandom = document.querySelector('#add-random');
-
-    elNewItem.addEventListener('click', addItem);
-    elAddRandom.addEventListener('click', addRandomItems);
-  }
+  elNewItem.addEventListener('click', addItem);
+  elAddRandom.addEventListener('click', addRandomItems);
 }
 
 

@@ -178,23 +178,3 @@ export function getURLParams(param) {
   const urlParams = new URLSearchParams(queryString);
   return (param) ? urlParams.get(param) : urlParams;
 }
-
-export function loginHandler() {
-  const elLogin = document.querySelector('#login'),
-    user = localStorage.getItem('user')
-
-  if (user) {
-    // Delete user's token from LS
-    localStorage.removeItem('user');
-
-    // Delete user's bucket list from LS
-    localStorage.removeItem('bucketList');
-
-    // Refresh page
-    window.location.href = "./";
-  } else {
-    const loginAPIUrl = 'https://bucketlisty.hub.loginradius.com/auth.aspx?action=register&return_url=https://bucketlisty.com'
-    elLogin.text = 'Logout'
-    window.open(loginAPIUrl).focus();
-  }
-}

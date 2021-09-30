@@ -14,11 +14,6 @@ function loadEventListeners() {
   createHeaderQuote();
 
 
-  const user = localStorage.getItem('user'),
-    elLogin = document.querySelector('#login');
-  elLogin.addEventListener('click', utilities.loginHandler);
-  (user) ? elLogin.text = 'Logout': null;
-
 }
 
 // Random inspirational quote from an API for the header 
