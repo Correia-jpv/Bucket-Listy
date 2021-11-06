@@ -1,6 +1,7 @@
-const path = require('path');
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path'),
+  webpack = require('webpack'),
+  dotenv = require('dotenv'),
+  HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './src/app.js',
@@ -56,8 +57,13 @@ module.exports = {
       filename: 'privacy.html',
       title: 'Privacy policy'
     }),
-    new webpack.ProvidePlugin({
-      process: 'process/browser',
-    }),
-  ]
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenv.config().parsed) // it will automatically pick up key values from .env file
+    })
+  ],
+  resolve: {
+    alias: {
+      process: "process/browser"
+    }
+  }
 };

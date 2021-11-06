@@ -1,6 +1,5 @@
 import * as utilities from '../utilities';
 const { API_URL, API_KEY } = process.env
-
 class Item {
   constructor(name = "", checked = false) {
     this.name = name;
