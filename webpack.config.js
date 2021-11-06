@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -54,6 +55,9 @@ module.exports = {
       page: 'privacy',
       filename: 'privacy.html',
       title: 'Privacy policy'
-    })
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
   ]
 };
