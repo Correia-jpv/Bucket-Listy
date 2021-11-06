@@ -1,5 +1,5 @@
 import * as utilities from '../utilities';
-const api_url = "https://bucketlisty-api.herokuapp.com/api/";
+const { API_URL, API_KEY } = process.env
 
 class Item {
   constructor(name = "", checked = false) {
@@ -13,11 +13,7 @@ class Item {
     let ls = localStorage.getItem('bucketList');
     let bucketList;
 
-    if (ls == null) {
-      bucketList = {};
-    } else {
-      bucketList = JSON.parse(ls);
-    }
+    bucketList = (!ls) ? {} : JSON.parse(ls)
 
     // Verify if item already exists
     (!(this.name in bucketList)) ? this.addItemToDB(): this.updateItemToDB();
@@ -41,13 +37,14 @@ class Item {
     // Verify if user's token is present
     const userToken = localStorage.getItem('user');
     if (userToken) {
-      const url = `${api_url}users/${userToken}`
+      const url = `${API_URL}users/${userToken}`
 
       await fetch(url, {
           method: "post",
           headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-api-key': API_KEY
           },
           body: JSON.stringify({
             item: this.name,
@@ -70,12 +67,13 @@ class Item {
     // Verify if user's token is present
     const userToken = localStorage.getItem('user');
     if (userToken) {
-      const url = `${api_url}users/${userToken}/${this.name}`
+      const url = `${API_URL}users/${userToken}/${this.name}`
       await fetch(url, {
           method: "put",
           headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-api-key': API_KEY
           },
           body: JSON.stringify({
             checked: this.checked
@@ -97,12 +95,13 @@ class Item {
     // Verify if user's token is present
     const userToken = localStorage.getItem('user');
     if (userToken) {
-      const url = `${api_url}users/${userToken}/${this.name}`
+      const url = `${API_URL}users/${userToken}/${this.name}`
       await fetch(url, {
           method: "delete",
           headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-api-key': API_KEY
           }
         })
         .then(response => {
@@ -135,13 +134,19 @@ export default class BucketList {
       urlToken = utilities.getURLParams('token'),
       userToken = lsToken || urlToken;
     if (userToken) {
-      const url = `${api_url}users/token/${userToken}`,
+      const url = `${API_URL}users/token/${userToken}`,
         elLogin = document.querySelector('#login');
       elLogin.text = 'Logout';
 
-
       // Get user's info and items
-      await fetch(url)
+      await fetch(url, {
+          method: "get",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'x-api-key': API_KEY
+          }
+        })
         .then(response => {
           if (!response.ok) {
             throw new Error('Connection problem or user not found');
@@ -164,8 +169,15 @@ export default class BucketList {
             const itemId = item.item,
               checked = item.checked;
 
-            let urlItem = `${api_url}items/id/${itemId}`
-            await fetch(urlItem)
+            let urlItem = `${API_URL}items/id/${itemId}`
+            await fetch(urlItem, {
+                method: "get",
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'x-api-key': API_KEY
+                }
+              })
               .then(response => {
                 if (!response.ok) {
                   throw new Error('Connection problem or item not found');
