@@ -1,6 +1,7 @@
 const path = require('path'),
   webpack = require('webpack'),
   dotenv = require('dotenv'),
+  Dotenv = require('dotenv-webpack'),
   HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -59,7 +60,14 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(dotenv.config().parsed) // it will automatically pick up key values from .env file
+    }),
+    new Dotenv({
+      allowEmptyValues: true,
+      systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
+      //silent: true, // hide errors
+      defaults: false // load '.env.defaults' as the default values if empty.
     })
+
   ],
   resolve: {
     alias: {
