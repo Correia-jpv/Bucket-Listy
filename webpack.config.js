@@ -1,6 +1,7 @@
 const path = require('path'),
   webpack = require('webpack'),
   dotenv = require('dotenv'),
+  Dotenv = require('dotenv-webpack'),
   HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -58,8 +59,11 @@ module.exports = {
       title: 'Privacy policy'
     }),
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify(dotenv.config().parsed) // it will automatically pick up key values from .env file
-    }),
+      "process.env": {
+        API_URL: JSON.stringify("API_URL"),
+        API_KEY: JSON.stringify("API_KEY")
+      }
+    })
 
   ],
   resolve: {
