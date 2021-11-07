@@ -1,5 +1,6 @@
 const path = require('path'),
   webpack = require('webpack'),
+  Dotenv = require('dotenv-webpack'),
   HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -56,12 +57,10 @@ module.exports = {
       filename: 'privacy.html',
       title: 'Privacy policy'
     }),
-    new webpack.DefinePlugin({
-      "process.env": {
-        API_URL: JSON.stringify("API_URL"),
-        API_KEY: JSON.stringify("API_KEY")
-      }
+    new Dotenv({
+      path: './.env',
+      allowEmptyValues: true,
+      systemvars: true
     })
-
   ],
 };
