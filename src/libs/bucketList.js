@@ -1,6 +1,6 @@
 import * as utilities from '../utilities';
-const API_URL = process.env.API_URL
-const API_KEY = process.env.API_KEY
+const API_URL = process.env.API_URL,
+  API_KEY = process.env.API_KEY
 class Item {
   constructor(name = "", checked = false) {
     this.name = name;
@@ -13,7 +13,11 @@ class Item {
     let ls = localStorage.getItem('bucketList');
     let bucketList;
 
-    bucketList = (!ls) ? {} : JSON.parse(ls)
+    if (ls == null) {
+      bucketList = {};
+    } else {
+      bucketList = JSON.parse(ls);
+    }
 
     // Verify if item already exists
     (!(this.name in bucketList)) ? this.addItemToDB(): this.updateItemToDB();

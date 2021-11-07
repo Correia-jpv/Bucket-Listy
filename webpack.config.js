@@ -1,7 +1,5 @@
 const path = require('path'),
   webpack = require('webpack'),
-  dotenv = require('dotenv'),
-  Dotenv = require('dotenv-webpack'),
   HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -66,9 +64,4 @@ module.exports = {
     })
 
   ],
-  resolve: {
-    alias: {
-      process: "process/browser"
-    }
-  }
 };
