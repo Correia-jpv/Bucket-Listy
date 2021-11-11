@@ -18,6 +18,14 @@ body {
   flex-direction: column;
 }
 
+a {
+  color: $primary-color;
+  text-decoration: none;
+  &:hover {
+    transition: color .3s ease-out;
+  }
+}
+
 // Navbar
 nav {
   position: fixed;
@@ -46,9 +54,11 @@ nav {
         vertical-align: super;
         font-size: 0.7rem;
         line-height: 0;
+        transition: font-size 0.3s ease-in;
       }
       &:hover::after {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+        transition: font-size 0.3s ease-out;
       }
     }
     li {
@@ -61,6 +71,7 @@ nav {
         display: block;
         &:hover {
           color: darken($secondary-color, 7%);
+          transition: color 0.3s ease-out;
         }
       }
     }
@@ -109,6 +120,12 @@ header {
     font-size: 1rem;
     margin: 0;
   }
+  .footer-mid {
+    a:hover {
+      color: lighten($primary-color, 25%);
+      transition: color 0.3s ease-out;
+    }
+  }
   .footer-icons {
     ul {
       display: flex;
@@ -127,7 +144,7 @@ header {
       color: $primary-color;
       &:hover {
         color: lighten($primary-color, 25%);
-        transition: color 0.3s ease-in;
+        transition: color 0.3s ease-out;
       }
     }
   }
@@ -183,8 +200,21 @@ header {
   &-remove {
     display: flex;
     align-items: center;
-    &:hover {
-      color: $error-color;
+    .bi-trash-fill,
+    .bi-x-lg {
+      &:hover {
+        color: $error-color;
+      }
+    }
+    .bi-pencil-fill {
+      &:hover {
+        color: $warning-color;
+      }
+    }
+    .bi-check-lg {
+      &:hover {
+        color: $success-color;
+      }
     }
   }
 }

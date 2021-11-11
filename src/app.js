@@ -27,19 +27,31 @@ async function createHeaderQuote() {
 
   // Only show quote on large screens
   if (mediaQuery.matches) {
-    const api_url = "https://still-ridge-96311.herokuapp.com/https://zenquotes.io/api/random";
+    const quoteApiUrl = "https://still-ridge-96311.herokuapp.com/https://zenquotes.io/api/random";
     let quote = '',
-      response, data,
-      maxLength = 140;
+      maxLength = 140,
+      condition
+
     // Get a short quote
-    while (quote.length == 0 || quote.includes('zenquotes') || quote.length > maxLength) {
-      response = await fetch(api_url)
-      data = await response.json();
+    do {
+      await fetch(quoteApiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Connection problem');
+          }
+          return response.json()
+        })
+        .then(data => {
+          quote = data[0]['h']
+        })
+        .catch(error => {
+          console.error('There has been a problem with your fetch operation:', error);
+        });
 
-      quote = data[0]['h'];
-
-      (quote.includes('zenquotes') || quote.length > maxLength) ? await utilities.sleep(1000): null;
-    }
+      condition = (quote.includes('zenquotes') || quote.length > maxLength || quote.length < 1)
+      if (condition)
+        await utilities.sleep(1000)
+    } while (condition)
 
     // Add quote to header
     const elQuoteContainer = document.querySelector('.inner');
