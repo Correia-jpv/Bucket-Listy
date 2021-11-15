@@ -112,10 +112,12 @@ header {
 #main-footer {
   padding: 1rem;
   background: $secondary-color;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-top: auto;
+  &>.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   p {
     font-size: 1rem;
     margin: 0;

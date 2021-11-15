@@ -7,16 +7,14 @@
 // Tablets and smaller
 @media(max-width: 768px) {
   body {
-    font-size: 21px;
-  }
-  nav>.container {
-    flex-direction: column;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
   }
   .inner * {
     display: none;
   }
   i {
-    font-size: 2rem!important;
+    // font-size: 2rem!important;
+    font-size: clamp(1.5rem, 5vw, 2rem)!important;
   }
   .checkbox,
   .checkbox span {
@@ -24,12 +22,23 @@
     width: 3rem;
   }
   footer {
-    flex-direction: column-reverse;
+    .cc-revoke {
+      font-size: clamp(0.6rem, 2vw, 0.8rem);
+    }
+    &>.container {
+      flex-direction: column-reverse;
+    }
   }
 }
 
 // Smartphones
-@media(max-width: 576px) {}
+@media(max-width: 576px) {
+  nav .logo {
+    background: url(http://127.0.0.1:5500/BucketList/src/img/favicon.ico) no-repeat center center;
+    margin: 0;
+    width: 75px;
+  }
+}
 
 // Landscape
 @media(max-heigth: 580px) {}

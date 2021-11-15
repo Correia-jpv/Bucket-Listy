@@ -1,31 +1,35 @@
 <!-- Footer -->
 <footer id="main-footer">
-  <div class="footer-left">
-    &copy;
-    <span id="copyright">
+  <div class="container">
+    <div class="footer-left">
+      &copy;
+      <span id="copyright">
         <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
         &nbsp;Bucket Listy
       </span>
-  </div>
-  <div class="footer-mid">
-    <a href="./privacy.html">Privacy Policy</a>
+    </div>
+    <div class="footer-mid">
+      <a href="./privacy.html">Privacy Policy</a>
 
-  </div>
+    </div>
 
-  <div class="footer-icons">
-    <ul>
-      <li><a href="https://github.com/Correia-jpv/" aria-label="Github"><i class="bi bi-github" aria-hidden="true"></i></a></li>
-      <li><a href="https://www.linkedin.com/in/Correiajpv/" aria-label="Linkedin"><i class="bi bi-linkedin" aria-hidden="true"></i></a></li>
-    </ul>
+    <div class="footer-icons">
+      <ul>
+        <li><a href="https://github.com/Correia-jpv/" aria-label="Github"><i class="bi bi-github" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/Correiajpv/" aria-label="Linkedin"><i class="bi bi-linkedin" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
 <script>
   window.cookieconsent.initialise({
+    "container": document.getElementById("main-footer"),
+    "position": "bottom-right",
     "palette": {
       "popup": {
-        "background": "#252e39"
+        "background": "#252e39",
       },
       "button": {
         "background": "#fff",
