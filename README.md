@@ -86,6 +86,9 @@ Feel free to open an [issue] with your suggestion!
   <!-- Resources -->
   [LoginRadius]:https://www.loginradius.com/docs/developer/tutorial/node-js
 
+  <!-- Suggestions -->
+  [issue]:https://github.com/correia-jpv/Bucket-Listy/issues/new
+
   <!-- Demo -->
   [BucketListy.com]:https://bucketlisty.com/
 
