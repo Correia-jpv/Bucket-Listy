@@ -7,24 +7,24 @@
 - [Introduction]
 - [Demo]
 - [API]
+- [Built With]
 - [Resources]
-- [Suggestions]
-- [License]  
+- [Contributing]
+- [License]
 
-
-<br/>
 
 ## Intro
 
-This is a bucket list single page web application developed with a MongoDB, Express and NodeJS stack.
-
-<br/>
+This is a bucket list single page web application developed with a Node.js, Express.js and MongoDB stack.
 
 ## Demo
 [BucketListy.com]
+
+![Netlify status]
+
 <!-- Host -->
 
-<details>
+<details open>
   <summary>PageSpeed Insights scores</summary>
 <details open>
   <summary>Desktop</summary>
@@ -43,28 +43,44 @@ This is a bucket list single page web application developed with a MongoDB, Expr
 
 <br/>
 
+
 ## API
 
-[API GitHub]
+  - [Bucket Listy API GitHub repo](https://github.com/Correia-jpv/Bucket-Listy-API )
+  - [Playground](https://bucketlisty-api.herokuapp.com/docs)
+  - [Documentation](https://bucketlisty-api.herokuapp.com/docs/jsdoc)
 
-[API Playground]
 
-[API Documentation]
+## Built With
+- [Node.js] - Back end JS runtime environment.
+- [Express.js] - Back end node framework to serve the REST API.
+- [MongoDB] - NoSQL database platform.
+- [Webpack] - JS module bundler.
+- [Sass] - CSS preprocessor.
+- [Bootstrap] - CSS framework.
+- [LoginRadius] - User authentication with social networks or traditional email/password.
+- [Particles.js] - Lightweight JS library to create particle animated background.
+- [ZenQuotes] - Quotes API consumed to present a header quote on wide viewport devices. 
 
-<br/>
+
 
 ## Resources
-- [LoginRadius]
+- [Netlify Cloud hosting]
+- [Lighthouse]
+- [PageSpeed Insights]
+- [PageSpeed Insights for README]
+- [Bucket List inspiration]
 
-<br/>
 
-## Suggestions
+## Contributing
 
-Wish there was another feature?
+Contributions are welcome! Read the [contribution guidelines](/contributing.md) first.
 
-Feel free to open an [issue] with your suggestion!
+Wish there was another feature? Feel free to open an [feature request issue](/../../issues/new?assignees=Correia-jpv&labels=enhancement&template=feature-request.md&title=%5BREQUEST%5D) with your suggestion!
 
-<br/>
+If you find a bug, kindly open an [bug report issue](/../../issues/new?assignees=Correia-jpv&labels=bug&template=bug_report.md&title=%5BBUG%5D) as described in the contribution guidelines.
+
+
 
 ## License
 [Licensed Under MIT]
@@ -78,24 +94,35 @@ Feel free to open an [issue] with your suggestion!
   <!-- Table of Contents -->
   [Introduction]:#Intro
   [Resources]:#resources
-  [Suggestions]:#suggestions
+  [Contributing]:#contributing
   [License]:#License
   [Demo]:#Demo
   [API]:#API
+  [Built With]:#built-with
 
   <!-- Resources -->
-  [LoginRadius]:https://www.loginradius.com/docs/developer/tutorial/node-js
+  [LoginRadius]:https://loginradius.com/docs/developer/tutorial/node-js
+  [Bucket List inspiration]:https://neal.fun/life-checklist/
+  [Webpack]:https://webpack.js.org/
+  [Node.js]:https://nodejs.org/
+  [MongoDB]:https://mongodb.com/
+  [Express.js]:https://expressjs.com/
+  [ZenQuotes]:https://zenquotes.io/
+  [Sass]:https://sass-lang.com/
+  [Particles.js]:https://vincentgarreau.com/particles.js/
+  [Netlify Cloud hosting]:https://netlify.com/
+  [Bootstrap]:https://getbootstrap.com/
+  [Lighthouse]:https://developers.google.com/web/tools/lighthouse
+  [PageSpeed Insights]:https://pagespeed.web.dev/
+  [PageSpeed Insights for README]:https://github.com/ankurparihar/readme-pagespeed-insights
 
-  <!-- Suggestions -->
+  <!-- Contributing -->
   [issue]:https://github.com/correia-jpv/Bucket-Listy/issues/new
 
   <!-- Demo -->
   [BucketListy.com]:https://bucketlisty.com/
+  [Netlify status]:https://api.netlify.com/api/v1/badges/45b2c9fe-b6ff-4fdc-bc8a-fe600df4ee0a/deploy-status
 
-  <!-- API -->
-  [API GitHub]:https://github.com/Correia-jpv/Bucket-Listy-API
-  [API Playground]:https://bucketlisty-api.herokuapp.com/docs
-  [API Documentation]:https://bucketlisty-api.herokuapp.com/docs/jsdoc
   
   <!-- License -->
   [Licensed Under MIT]:https://spdx.org/licenses/MIT.html
