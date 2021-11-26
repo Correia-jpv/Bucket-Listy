@@ -149,9 +149,9 @@ If you find a bug, kindly open an [bug report issue](/../../issues/new?assignees
   [Lighthouse]:https://developers.google.com/web/tools/lighthouse
   [PageSpeed Insights]:https://pagespeed.web.dev/
   [PageSpeed Insights for README]:https://github.com/ankurparihar/readme-pagespeed-insights
-  [EJS]:#https://ejs.co/
-  [Lorem Picsum]:#https://picsum.photos/
-  [Mongoose]:#https://mongoosejs.com/
+  [EJS]:https://ejs.co/
+  [Lorem Picsum]:https://picsum.photos/
+  [Mongoose]:https://mongoosejs.com/
 
   <!-- Contributing -->
   [issue]:https://github.com/correia-jpv/Bucket-Listy/issues/new
