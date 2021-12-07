@@ -22,7 +22,7 @@
     "postcss-loader": "^6.1.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
-    "webpack": "^5.50.0",
+    "webpack": "^5.65.0",
     "webpack-cli": "^4.8.0",
     "nodemon": "^2.0.12",
     "watch": "^1.0.2",
