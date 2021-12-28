@@ -2,6 +2,7 @@ import 'bootstrap';
 import './scss/app.scss';
 import * as utilities from './utilities';
 import "./home";
+import sanitizeHtml from 'sanitize-html';
 
 // Load all event listeners
 loadEventListeners();
@@ -55,6 +56,6 @@ async function createHeaderQuote() {
 
     // Add quote to header
     const elQuoteContainer = document.querySelector('.inner');
-    elQuoteContainer.innerHTML = quote;
+    elQuoteContainer.innerHTML = sanitizeHtml(quote)
   }
 }
