@@ -69,8 +69,8 @@ jobs:
       - name: Create local changes
         run: | # Have to be sure a folder is present if not, make it
             mkdir -p ${RESULTSFOLDER}
-            curl "${PSURL}/?url=${HOST}&theme=dark&categories=30?tests=3" > ./${RESULTSFOLDER}/${PSRDESKTOP}.svg
-            curl "${PSURL}/?url=${HOST}&strategy=mobile&theme=dark&categories=30?tests=3" > ./${RESULTSFOLDER}/${PSRMOBILE}.svg
+            curl "${PSURL}/?url=${HOST}&theme=dark&categories=30&tests=3" > ./${RESULTSFOLDER}/${PSRDESKTOP}.svg
+            curl "${PSURL}/?url=${HOST}&strategy=mobile&theme=dark&categories=30&tests=3" > ./${RESULTSFOLDER}/${PSRMOBILE}.svg
       - name: Commit files 
         run: |
           git add .
