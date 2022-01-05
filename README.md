@@ -165,5 +165,5 @@ If you find a bug, kindly open an [bug report issue](/../../issues/new?assignees
   [Licensed Under MIT]:https://spdx.org/licenses/MIT.html
 
   <!-- PageSpeed Insights scores -->
-  [PageSpeed Insights score desktop]:documentation/psiScore-desktop.svg "PageSpeed Insights score desktop"
-  [PageSpeed Insights score mobile]:documentation/psiScore-mobile.svg "PageSpeed Insights score mobile"
+  [PageSpeed Insights score desktop]:documentation/psi-audit-desktop.svg "PageSpeed Insights score desktop"
+  [PageSpeed Insights score mobile]:documentation/psi-audit-mobile.svg "PageSpeed Insights score mobile"
