@@ -101,7 +101,7 @@ Aim of this project is to build a simple single page web application on a Node.j
 - [Netlify Cloud hosting]
 - [Lighthouse]
 - [PageSpeed Insights]
-- [PageSpeed Insights for README]
+- [PageSpeed Insights to SVG]
 - [Bucket List inspiration]
 
 
@@ -148,7 +148,7 @@ If you find a bug, kindly open an [bug report issue](/../../issues/new?assignees
   [Bootstrap]:https://getbootstrap.com/
   [Lighthouse]:https://developers.google.com/web/tools/lighthouse
   [PageSpeed Insights]:https://pagespeed.web.dev/
-  [PageSpeed Insights for README]:https://github.com/ankurparihar/readme-pagespeed-insights
+  [PageSpeed Insights to SVG]:https://github.com/Correia-jpv/pagespeed-insights-to-svg
   [EJS]:https://ejs.co/
   [Lorem Picsum]:https://picsum.photos/
   [Mongoose]:https://mongoosejs.com/
