@@ -28,9 +28,10 @@ async function createHeaderQuote() {
 
   // Only show quote on large screens
   if (mediaQuery.matches) {
-    const quoteApiUrl = "https://still-ridge-96311.herokuapp.com/https://zenquotes.io/api/random";
+    const quoteApiUrl = "https://leksell.io/zen/api/quotes/random";
     let quote = '',
-      maxLength = 140,
+      author = '',
+      maxLength = 100,
       condition
 
     // Get a short quote
@@ -43,19 +44,45 @@ async function createHeaderQuote() {
           return response.json()
         })
         .then(data => {
-          quote = data[0]['h']
+          quote = data['quote']
+          author = data['author']
         })
         .catch(error => {
           console.error('There has been a problem with your fetch operation:', error);
         });
 
-      condition = (quote.includes('zenquotes') || quote.length > maxLength || quote.length < 1)
+      condition = (quote.length > maxLength || quote.length < 1)
       if (condition)
         await utilities.sleep(1000)
     } while (condition)
 
     // Add quote to header
-    const elQuoteContainer = document.querySelector('.inner');
-    elQuoteContainer.innerHTML = sanitizeHtml(quote)
+    const elQuoteContainer = document.querySelector('.inner'),
+    elQuoteFigure = document.createElement('figure'),
+    elQuoteFigureBlockquote = document.createElement('blockquote'),
+    elQuoteFigureBlockquoteParagraph = document.createElement('p'),
+    elQuoteFigureFigcaption = document.createElement('figcaption'),
+    elQuoteFigureFigcaptionCite = document.createElement('cite')
+
+    elQuoteContainer.appendChild(elQuoteFigure)
+    elQuoteFigure.appendChild(elQuoteFigureBlockquote)
+    elQuoteFigure.appendChild(elQuoteFigureFigcaption)
+    elQuoteFigureBlockquote.appendChild(elQuoteFigureBlockquoteParagraph)
+    elQuoteFigureFigcaption.appendChild(elQuoteFigureFigcaptionCite)
+
+    elQuoteFigureBlockquote.classList.add('blockquote')
+    elQuoteFigureBlockquote.classList.add('my-0')
+    elQuoteFigureBlockquote.classList.add('mx-2')
+    elQuoteFigureBlockquoteParagraph.classList.add('fs-6')
+    elQuoteFigureFigcaption.classList.add('blockquote-footer')
+    elQuoteFigureFigcaption.classList.add('text-light')
+    elQuoteFigureFigcaption.classList.add('m-0')
+    // elQuoteFigureFigcaption.classList.add('blockquote-footer ')
+
+    elQuoteFigureBlockquoteParagraph.textContent = quote
+    elQuoteFigureFigcaptionCite.textContent = author
+    // elQuoteContainer.innerHTML = sanitizeHtml(quote)
+
+
   }
 }
