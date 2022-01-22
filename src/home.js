@@ -33,7 +33,7 @@ async function createBucketList(bucketList = new BucketList) {
   lsBucketList.getBucketListFromLS();
 
   // Get the item index
-  let elItemRow = document.querySelectorAll("#bucket-list .row:last-child")[0];
+  let elItemRow = document.querySelectorAll("#bucket-list")[0];
   let itemIndex = (elItemRow) ? Math.abs(lsBucketList.numberOfItems - bucketList.numberOfItems) + 1 : 1;
 
   const items = bucketList.items;
@@ -43,15 +43,6 @@ async function createBucketList(bucketList = new BucketList) {
     const itemChecked = items[item];
     const itemName = item;
     const itemId = `bucket-item-check-${itemIndex}`;
-    const isEvenItem = itemIndex % 2;
-
-    // Create a new row every 2 items
-    if (isEvenItem) {
-      elItemRow = document.createElement('div');
-      elItemRow.className = 'row g-0';
-      const elBucketListDiv = document.querySelector('#bucket-list');
-      elBucketListDiv.appendChild(elItemRow);
-    }
 
     // Item
     const elItemDiv = document.createElement('div');
@@ -177,10 +168,10 @@ function addRandomItems() {
 // Tick Event
 function tickItem(e) {
   if (e.currentTarget.parentElement.parentElement.querySelector(":scope > span") !== null) {
-    const elItem = e.currentTarget.parentElement.parentElement.querySelector(":scope > span");
-    const item = elItem.textContent;
-    const bucketList = new BucketList;
-    const lsBucketList = localStorage.getItem('bucketList');
+    const elItem = e.currentTarget.parentElement.parentElement.querySelector(":scope > span"),
+      item = elItem.textContent,
+      bucketList = new BucketList,
+      lsBucketList = localStorage.getItem('bucketList');
 
     bucketList.items = (JSON.parse(lsBucketList));
     const checked = !bucketList.getItem(item);
