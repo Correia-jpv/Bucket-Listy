@@ -67,7 +67,7 @@ nav {
         font-size: 0.9em;
         color: $secondary-color;
         text-decoration: none;
-        margin: 5px 0 0 20px;
+        // margin: 0 20px;
         display: block;
         &:hover {
           color: darken($secondary-color, 7%);

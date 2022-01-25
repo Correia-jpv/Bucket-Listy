@@ -23,11 +23,11 @@ function init() {
 async function getBucketList() {
   let bucketList = new BucketList;
   await bucketList.populate()
-  createBucketList(bucketList);
+  createBucketList(bucketList, true);
 }
 
 // Create HTML item elements
-async function createBucketList(bucketList = new BucketList) {
+async function createBucketList(bucketList = new BucketList, importing = false) {
   // Get the stored bucket list
   const lsBucketList = new BucketList
   lsBucketList.getBucketListFromLS();
@@ -35,6 +35,10 @@ async function createBucketList(bucketList = new BucketList) {
   // Get the item index
   let elItemRow = document.querySelectorAll("#bucket-list")[0];
   let itemIndex = (elItemRow) ? Math.abs(lsBucketList.numberOfItems - bucketList.numberOfItems) + 1 : 1;
+
+  if (importing)
+    elItemRow.innerHTML = '';
+  
 
   const items = bucketList.items;
 
@@ -91,8 +95,9 @@ async function createBucketList(bucketList = new BucketList) {
 
     itemIndex++;
 
-    // Smooth show item transition
-    await utilities.sleep(100);
+    if (!importing)
+      // Smooth show item transition
+      await utilities.sleep(100);
     elItemDiv.classList.toggle('show');
   }
 
