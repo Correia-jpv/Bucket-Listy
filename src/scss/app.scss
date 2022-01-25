@@ -83,7 +83,7 @@ header {
   background: $primary-color;
   .headline {
     position: relative;
-    height: 140px;
+    height: 210px;
     color: $secondary-color;
     text-align: center;
     background: url('https://picsum.photos/1000/160/?blur=1&random=1.webp') no-repeat center center;
@@ -100,7 +100,8 @@ header {
     .inner {
       position: absolute;
       top: 70%;
-      left: 50%;
+      left: 50vw;
+      right: -20vw;
       z-index: 10;
       transform: translateX(-50%) translateY(-50%);
       animation: fade-in 0.75s 0.25s ease-in forwards;

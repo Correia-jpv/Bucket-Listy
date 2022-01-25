@@ -1,17 +1,11 @@
-@media(min-width: 769px) {
-  .inner * {
-    display: inline-block;
-  }
-}
-
 // Tablets and smaller
 @media(max-width: 768px) {
   body {
     font-size: clamp(1.2rem, 3vw, 1.5rem);
   }
-  .inner * {
-    display: none;
-  }
+  // .inner * {
+  //   display: none;
+  // }
   i {
     // font-size: 2rem!important;
     font-size: clamp(1.5rem, 5vw, 2rem)!important;
@@ -29,14 +23,18 @@
       flex-direction: column-reverse;
     }
   }
+  nav .logo {
+    background: url("../img/favicon.ico") no-repeat center center;
+    margin: 0 20px 0 0;
+    width: 40px;
+  }
 }
 
 // Smartphones
-@media(max-width: 576px) {
+@media(max-width: 480px) {
   nav .logo {
-    // background: url("../img/favicon.ico") no-repeat center center;
     margin: 0;
-    // width: 75px;
+    width: 26px;
   }
 }
 

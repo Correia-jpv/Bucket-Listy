@@ -24,10 +24,10 @@ function loadEventListeners() {
 
 // Random inspirational quote from an API for the header 
 async function createHeaderQuote() {
-  let mediaQuery = window.matchMedia("(min-width: 769px)")
+  // let mediaQuery = window.matchMedia("(min-width: 769px)")
 
-  // Only show quote on large screens
-  if (mediaQuery.matches) {
+  // DISABLED - Only show quote on large screens
+  // if (mediaQuery.matches) {
     const quoteApiUrl = "https://leksell.io/zen/api/quotes/random";
     let quote = '',
       author = '',
@@ -77,12 +77,10 @@ async function createHeaderQuote() {
     elQuoteFigureFigcaption.classList.add('blockquote-footer')
     elQuoteFigureFigcaption.classList.add('text-light')
     elQuoteFigureFigcaption.classList.add('m-0')
-    // elQuoteFigureFigcaption.classList.add('blockquote-footer ')
 
     elQuoteFigureBlockquoteParagraph.textContent = quote
     elQuoteFigureFigcaptionCite.textContent = author
-    // elQuoteContainer.innerHTML = sanitizeHtml(quote)
 
 
-  }
+  // }
 }
