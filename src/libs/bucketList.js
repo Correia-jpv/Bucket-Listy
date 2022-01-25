@@ -4,9 +4,10 @@ import { Toast } from 'bootstrap';
 const API_URL = process.env.API_URL,
   API_KEY = process.env.API_KEY
 class Item {
-  constructor(name = "", checked = false) {
+  constructor(name = "", checked = false, importing = false) {
     this.name = name;
     this.checked = checked;
+    this.importing = importing;
     this.save();
   }
 
@@ -20,9 +21,10 @@ class Item {
     } else {
       bucketList = JSON.parse(ls);
     }
-
-    // Verify if item already exists
-    (!(this.name in bucketList)) ? this.addItemToDB(): this.updateItemToDB();
+    
+    if (!this.importing)
+      // Verify if item already exists
+      (!(this.name in bucketList)) ? this.addItemToDB(): this.updateItemToDB();
     bucketList[this.name] = this.checked;
 
     localStorage.setItem('bucketList', JSON.stringify(bucketList));
@@ -197,7 +199,7 @@ export default class BucketList {
                 })
                 .then(data => {
                   const name = data.name;
-                  this.setItem(name, checked);
+                  this.setItem(name, checked, true);
                 })
             };
           } else {
@@ -227,8 +229,8 @@ export default class BucketList {
     }
   }
 
-  setItem(name = "", checked = false) {
-    let item = new Item(name, checked);
+  setItem(name = "", checked = false, importing = false) {
+    let item = new Item(name, checked, importing);
 
     this.items[item.name] = item.checked;
   }
