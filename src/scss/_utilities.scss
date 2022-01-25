@@ -262,5 +262,5 @@ input {
 
 // Bootstrap toast
 .toast {
-  width:min(90vw,350px);
+  width:unquote("min(90vw,350px)");
 }
