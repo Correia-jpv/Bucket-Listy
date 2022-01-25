@@ -1,4 +1,6 @@
 import * as utilities from '../utilities';
+import { Toast } from 'bootstrap';
+
 const API_URL = process.env.API_URL,
   API_KEY = process.env.API_KEY
 class Item {
@@ -139,11 +141,12 @@ export default class BucketList {
       userToken = lsToken || urlToken;
     if (userToken) {
       const url = `${API_URL}users/token/${userToken}`,
-        elLogin = document.querySelector('#login');
-      elLogin.text = 'Logout';
-
-      // Get user's info and items
-      await fetch(url, {
+        elLogin = document.querySelector('#login'),
+        elToast = document.querySelector('#message-toast'),
+        elToastMessage = document.querySelector('#message-toast .toast-body');
+        
+        // Get user's info and items
+        await fetch(url, {
           method: "get",
           headers: {
             'Accept': 'application/json',
@@ -151,48 +154,61 @@ export default class BucketList {
             'x-api-key': API_KEY
           }
         })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Connection problem or user not found');
+        .then(response => Promise.all([response.status, response.json()]))
+        .then(async ([status, data]) => {
+          if (status === 200) {
+            // Login button
+            elLogin.text = 'Logout';
+
+            // Login toast - successful
+            elToastMessage.textContent = 'Login successful!';
+            let bsAlert = new Toast(elToast);
+            bsAlert.show();
+
+            const bucketListDB = data['items'];
+
+            // Reset LS
+            localStorage.removeItem('bucketList');
+            this.items = {}
+
+            // Save user's token to LS
+            localStorage.setItem('user', userToken);
+
+
+            // Get each item's name
+            for (const item of bucketListDB) {
+              const itemId = item.item,
+                checked = item.checked;
+
+              let urlItem = `${API_URL}items/id/${itemId}`
+              await fetch(urlItem, {
+                  method: "get",
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'x-api-key': API_KEY
+                  }
+                })
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Connection problem or item not found');
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  const name = data.name;
+                  this.setItem(name, checked);
+                })
+            };
+          } else {
+            // Login button
+            elLogin.text = 'Login';
+
+            // Login toast - expired session
+            elToastMessage.textContent = 'Your session expired. Login again to save your bucket list accross devices.';
+            let bsAlert = new Toast(elToast);
+            bsAlert.show();
           }
-          return response.json();
-        })
-        .then(async data => {
-          const bucketListDB = data['items'];
-
-          // Reset LS
-          localStorage.removeItem('bucketList');
-          this.items = {}
-
-          // Save user's token to LS
-          localStorage.setItem('user', userToken);
-
-
-          // Get each item's name
-          for (const item of bucketListDB) {
-            const itemId = item.item,
-              checked = item.checked;
-
-            let urlItem = `${API_URL}items/id/${itemId}`
-            await fetch(urlItem, {
-                method: "get",
-                headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json',
-                  'x-api-key': API_KEY
-                }
-              })
-              .then(response => {
-                if (!response.ok) {
-                  throw new Error('Connection problem or item not found');
-                }
-                return response.json();
-              })
-              .then(data => {
-                const name = data.name;
-                this.setItem(name, checked);
-              })
-          };
         })
         .catch(error => {
           console.error('There has been a problem with your fetch operation:', error);
