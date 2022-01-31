@@ -2,7 +2,7 @@ name: PSI-scores-to-SVG
 on:
   push:
     branches:
-      -main
+      - main
 jobs:
   getpsresults:
       env:
