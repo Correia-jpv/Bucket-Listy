@@ -1,6 +1,8 @@
 name: PSI-scores-to-SVG
-on: [push]
-
+on:
+  push:
+    branches:
+      -main
 jobs:
   getpsresults:
       env:
@@ -10,7 +12,6 @@ jobs:
         PSRMOBILE: psi-audit-mobile
         RESULTSFOLDER: documentation/reports
       runs-on: ubuntu-latest     
-      if: github.event_name != 'pull_request'
       steps:
       - uses: actions/checkout@v2
         with:
