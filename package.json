@@ -22,7 +22,7 @@
     "exports-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
     "node-sass": "^7.0.1",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.19",
     "npm-watch": "^0.11.0",
     "popper.js": "^1.16.1",
     "postcss": "^8.4.12",
