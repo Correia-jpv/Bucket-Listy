@@ -1,47 +1,48 @@
 name: PSI-scores-to-SVG
 on:
+  workflow_dispatch:
+  schedule:
+    - cron: '31 5 * * 1'
   push:
     branches:
       - main
 jobs:
   getpsresults:
-      env:
-        URLS: https://bucketlisty.com
-        PSURL: https://pagespeed-insights-svg.openode.dev
-        PSRDESKTOP: psi-audit-desktop
-        PSRMOBILE: psi-audit-mobile
-        RESULTSFOLDER: documentation/reports
-      runs-on: ubuntu-latest     
-      steps:
+    env:
+      URLS: https://bucketlisty.com
+      PSURL: https://pagespeed-insights-svg.glitch.me
+      PSRDESKTOP: psi-audit-desktop
+      PSRMOBILE: psi-audit-mobile
+      RESULTSFOLDER: reports
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v3
         with:
           persist-credentials: false
           fetch-depth: 0
       - name: Create local changes
         run: |
-            mkdir -p ${RESULTSFOLDER}
-            IFS=',' read -r -a HOSTS <<< $URLS
-            for i in "${!HOSTS[@]}"; do
-              position=$(( $i + 1 ))
-              while [ ! "$auditDesktop" ]; do
-                auditDesktop=$(curl "${PSURL}/?url=${HOSTS[$i]}&theme=dark&categories=30&tests=3")
-              done
-              cat <<< "$auditDesktop" > ./${RESULTSFOLDER}/${PSRDESKTOP}-${position}.svg
-              while [ ! "$auditMobile" ]; do
-                auditMobile=$(curl "${PSURL}/?url=${HOSTS[$i]}&strategy=mobile&theme=dark&categories=30&tests=3")
-              done
-              cat <<< "$auditMobile" > ./${RESULTSFOLDER}/${PSRMOBILE}-${position}.svg
-              unset auditDesktop
-              unset auditMobile
+          mkdir -p ${RESULTSFOLDER}
+          IFS=',' read -r -a HOSTS <<< $URLS
+          for i in "${!HOSTS[@]}"; do
+            position=$(( $i + 1 ))
+            while [ ! "$auditDesktop" ]; do
+              auditDesktop=$(curl "${PSURL}/?url=${HOSTS[$i]}&theme=dark&categories=30&tests=3")
             done
-
-      - name: Commit files 
+            cat <<< "$auditDesktop" > ./${RESULTSFOLDER}/${PSRDESKTOP}-${position}.svg
+            while [ ! "$auditMobile" ]; do
+              auditMobile=$(curl "${PSURL}/?url=${HOSTS[$i]}&strategy=mobile&theme=dark&categories=30&tests=3")
+            done
+            cat <<< "$auditMobile" > ./${RESULTSFOLDER}/${PSRMOBILE}-${position}.svg
+            unset auditDesktop
+            unset auditMobile
+          done
+      - name: Commit files
         run: |
           git add .
           git config --local user.email "actions@github.com"
           git config --local user.name "github-actions[bot]"
           git diff --quiet && git diff --staged --quiet || git commit -am "🔁 CI" -m "Updated PageSpeed Insights results SVGs"
-
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
