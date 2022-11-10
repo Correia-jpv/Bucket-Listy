@@ -31,7 +31,7 @@
     "sanitize-html": "^2.7.0",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
-    "webpack": "^5.70.0",
+    "webpack": "^5.75.0",
     "webpack-cli": "^4.9.2"
   },
   "keywords": [],
