@@ -38,7 +38,7 @@ async function createHeaderQuote() {
     do {
       await fetch(quoteApiUrl)
         .then(response => {
-          if (!response.ok) {
+          if (!response.ok && response.status !== 302) {
             throw new Error('Connection problem');
           }
           return response.json()
