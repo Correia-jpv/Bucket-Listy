@@ -28,7 +28,7 @@ async function createHeaderQuote() {
 
   // DISABLED - Only show quote on large screens
   // if (mediaQuery.matches) {
-    const quoteApiUrl = "https://w1ki63.deta.dev/api/quotes/random";
+    const quoteApiUrl = "https://zenquotes-1-u5686915.deta.app/api/quotes/random";
     let quote = '',
       author = '',
       maxLength = 100,
